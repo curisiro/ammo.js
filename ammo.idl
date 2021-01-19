@@ -585,6 +585,8 @@ interface btRigidBody {
   void setGravity([Const, Ref] btVector3 acceleration);
   [Const] btBroadphaseProxy getBroadphaseProxy();
   void clearForces();
+  float getLinearSleepingThreshold();
+  float getAngularSleepingThreshold();
 };
 btRigidBody implements btCollisionObject;
 
