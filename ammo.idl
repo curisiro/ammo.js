@@ -35,6 +35,7 @@ interface btVector3 {
   void normalize();
   [Value] btVector3 rotate([Ref] btVector3 wAxis, float angle);
   float dot([Ref] btVector3 v);
+  [Value] btVector3 cross([Ref] btVector3 v);
   [Operator="*=", Ref] btVector3 op_mul(float x);
   [Operator="+=", Ref] btVector3 op_add([Ref] btVector3 v);
   [Operator="-=", Ref] btVector3 op_sub([Ref] btVector3 v);
@@ -632,6 +633,10 @@ interface btGeneric6DofConstraint {
   void setAngularLowerLimit([Const, Ref] btVector3 angularLower);
   void setAngularUpperLimit([Const, Ref] btVector3 angularUpper);
   [Const, Ref] btTransform getFrameOffsetA();
+  void getLinearLowerLimit([Ref] btVector3 linearLower);
+  void getLinearUpperLimit([Ref] btVector3 linearUpper);
+  void getAngularLowerLimit([Ref] btVector3 angularLower);
+  void getAngularUpperLimit([Ref] btVector3 angularUpper);
 };
 btGeneric6DofConstraint implements btTypedConstraint;
 
