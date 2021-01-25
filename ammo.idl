@@ -627,7 +627,7 @@ btPoint2PointConstraint implements btTypedConstraint;
 
 interface btTranslationalLimitMotor {
   void btTranslationalLimitMotor();
-  void btTranslationalLimitMotor([Const, Ref] btTranslationalLimitMotor);
+  void btTranslationalLimitMotor([Const, Ref] btTranslationalLimitMotor other);
   [Const] boolean isLimited(long index);
   [Const] boolean needApplyForce(long index);
   [Value] attribute btVector3 m_lowerLimit;
@@ -638,9 +638,9 @@ interface btTranslationalLimitMotor {
 
 interface btRotationalLimitMotor {
   void btRotationalLimitMotor();
-  void btRotationalLimitMotor([Const, Ref] btRotationalLimitMotor);
-  [Const] boolean isLimited(long index);
-  [Const] boolean needApplyForce(long index);
+  void btRotationalLimitMotor([Const, Ref] btRotationalLimitMotor other);
+  [Const] boolean isLimited();
+  [Const] boolean needApplyTorques();
   attribute float m_loLimit;
   attribute float m_hiLimit;
   attribute float m_targetVelocity;
@@ -663,8 +663,8 @@ interface btGeneric6DofConstraint {
   void getLinearUpperLimit([Ref] btVector3 linearUpper);
   void getAngularLowerLimit([Ref] btVector3 angularLower);
   void getAngularUpperLimit([Ref] btVector3 angularUpper);
-  [Ref] btRotationalLimitMotor getRotationalLimitMotor(long index);
-  [Ref] btTranslationalLimitMotor getTranslationalLimitMotor();
+  btRotationalLimitMotor getRotationalLimitMotor(long index);
+  btTranslationalLimitMotor getTranslationalLimitMotor();
 };
 btGeneric6DofConstraint implements btTypedConstraint;
 
